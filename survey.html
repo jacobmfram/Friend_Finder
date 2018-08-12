@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Friend Finder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <script src="/logic.js" type="javascript"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+</head>
+<body>
+    <div class="row">
+        <div class="col s12 m8">
+            <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <span class="card-title">Friend Finder</span>
+                <p>Fill out our survey to meet new friends</p>
+            </div>
+            </div>
+        </div>
+    </div>
+  <br>
+  <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s12 m8">
+          <input placeholder="Your Name" id="valCapture-1" type="text" class="validate">
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12 m8">
+          <input placeholder="Link to Your Picture" id="valCapture-2" type="text" class="validate">
+        </div>
+    </div>
+    </form>
+  </div>
+  <br>
+  <h4>Toggle further right to show more agreement</h4>
+  <br>
+  <div class="row">
+    <div class="col s10 m5">
+        <form action="#">
+            <h5>Question 1:</h5>
+            <p class="range-field">
+                    Your mind is always buzzing with unexplored ideas and plans.
+                <input type="range" id="valCapture-3" min="1" max="5"></input>
+            </p>
+        </form>
+       </div>
+    </div>
+    <div class="row">
+        <div class="col s10 m5">
+            <form action="#">
+                <h5>Question 2:</h5>
+                <p class="range-field">
+                        Generally speaking, you rely more on your experience than your imagination.
+                    <input type="range" id="valCapture-4" min="1" max="5"></input>
+                </p>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+            <div class="col s10 m5">
+                <form action="#">
+                    <h5>Question 3:</h5>
+                    You find it easy to stay relaxed and focused even when there is some pressure.
+                    <p class="range-field">
+                        <input type="range" id="valCapture-5" min="1" max="5"></input>
+                    </p>
+                </form>
+            </div>
+        </div>
+    <div class="row">
+        <div class="col s10 m5">
+            <form action="#">
+                <h5>Question 4:</h5>
+                <p class="range-field">
+                        You rarely do something just out of sheer curiosity.
+                    <input type="range" id="valCapture-6" min="1" max="5"></input>
+                </p>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+    <div class="col s10 m5">
+        <form action="#">
+            <h5>Question 5:</h5>
+            People can rarely upset you.    
+            <p class="range-field">
+                <input type="range" id="valCapture-7" min="1" max="5"></input>
+            </p>
+        </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s10 m5">
+            <form action="#">
+                <h5>Question 6:</h5>
+                It is often difficult for you to relate to other people’s feelings.
+                <p class="range-field">
+                    <input type="range" id="valCapture-8" min="1" max="5"></input>
+                </p>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s10 m5">
+            <form action="#">
+                <h5>Question 7:</h5>
+                In a discussion, truth should be more important than people’s sensitivities.
+                <p class="range-field">
+                    <input type="range" id="valCapture-9" min="1" max="5"></input>
+                </p>
+            </form>
+        </div>
+        </div>
+    <div class="row">
+        <div class="col s10 m5">
+            <form action="#">
+                <h5>Question 8:</h5>
+                You rarely get carried away by fantasies and ideas.
+                <p class="range-field">
+                    <input type="range" id="valCapture-10" min="1" max="5"></input>
+                </p>
+            </form>
+        </div>
+    </div>  
+    <div class="row">
+        <div class="col s10 m5">
+            <form action="#">
+                <h5>Question 9:</h5>
+                You think that everyone’s views should be respected regardless of whether they are supported by facts or not.
+                <p class="range-field">
+                    <input type="range" id="valCapture-11" min="1" max="5"></input>
+                </p>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s10 m5">
+            <form action="#">
+                <h5>Question 10:</h5>
+                You feel more energetic after spending time with a group of people.
+                <p class="range-field">
+                    <input type="range" id="valCapture-11" min="1" max="5"></input>
+                </p>
+            </form>
+        </div>
+    </div>   
+
+    <a class="waves-effect waves-light btn" id="submit" href="/findmatches">Submit</a>
+
+    <script src="/logic.js" type="javascript"></script>
+    <script type="text/javascript">
+        var valuesCapture = [];
+        var matches = [];
+     
+        document.getElementById("submit").addEventListener("click", function(event) {
+        for(let i = 1; i <= 4; i++) {
+            valuesCapture.push(document.getElementById("valCapture-" + i).value);
+            document.getElementById("valCapture-" + i).value = "";
+        };
+
+        var newMatch = {
+            name: valuesCapture[0],
+            picture: valuesCapture[1],
+            q1: parseFloat(valuesCapture[2]),
+            q2: parseFloat(valuesCapture[3]),
+            q3: parseFloat(valuesCapture[4]),
+            q4: parseFloat(valuesCapture[5]),
+            q5: parseFloat(valuesCapture[6]),
+            q6: parseFloat(valuesCapture[7]),
+            q7: parseFloat(valuesCapture[8]),
+            q8: parseFloat(valuesCapture[9]),
+            q9: parseFloat(valuesCapture[10]),
+            q10: parseFloat(valuesCapture[11]),
+            diff: 0
+        };
+        matches.push(newMatch);
+        $.post("/api/matches", newMatch)
+            .then(function(data) {
+                console.log("Finding your match...");
+            });
+        });
+        
+    </script>
+
+</body>
+</html>
